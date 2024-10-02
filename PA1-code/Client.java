@@ -204,7 +204,7 @@ public class Client extends Thread {
      */
     public void run() {
         Transactions transact = new Transactions();
-        long sendClientStartTime = 0, sendClientEndTime = 0, receiveClientStartTime = 0, receiveClientEndTime = 0;
+        long sendClientStartTime, sendClientEndTime, receiveClientStartTime, receiveClientEndTime;
 
         /* Implement here the code for the run method ... */
         if (clientOperation.equals("sending")) {
