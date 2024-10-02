@@ -309,22 +309,20 @@ public class Server extends Thread{
     public void run()
     {   Transactions trans = new Transactions();
     	long serverStartTime=0, serverEndTime=0;
-
     	System.out.println("\n DEBUG : Server.run() - starting server thread " + objNetwork.getServerConnectionStatus());
-    	
+        
     	/* Implement the code for the run method */
-        if(objNetwork.getInBufferStatus().equals("empty")){
-            objNetwork.transferIn(trans);
-        }else{
+        serverStartTime = System.currentTimeMillis();
+        while(objNetwork.getInBufferStatus().equals("empty") || objNetwork.getOutBufferStatus().equals("full")){
             Thread.yield();
         }
-        if(objNetwork.getOutBufferStatus().equals("full")){
-            Thread.yield();
-        }else{
-            objNetwork.transferOut(trans);
-        }
+        processTransactions(trans);
+        serverEndTime = System.currentTimeMillis();
         System.out.println("\n Terminating server thread - " + " Running time " + (serverEndTime - serverStartTime) + " milliseconds");
-           
+        if(objNetwork.getClientConnectionStatus().equals("disconnected"))
+        {
+            objNetwork.disconnect(objNetwork.getServerIP());
+        }        
     }
 }
 
