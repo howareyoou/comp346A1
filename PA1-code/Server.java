@@ -183,8 +183,8 @@ public class Server extends Thread {
             /* Alternatively, busy-wait until the network input buffer is available */
 
             if (!objNetwork.getInBufferStatus().equals("empty")) {
-                System.out.println("\n DEBUG : Server.processTransactions() - transferring in account "
-                        + trans.getAccountNumber());
+                // System.out.println("\n DEBUG : Server.processTransactions() - transferring in account "
+                //         + trans.getAccountNumber());
 
                 objNetwork.transferIn(trans); /* Transfer a transaction from the network input buffer */
 
@@ -195,8 +195,8 @@ public class Server extends Thread {
                     trans.setTransactionBalance(newBalance);
                     trans.setTransactionStatus("done");
 
-                    System.out.println("\n DEBUG : Server.processTransactions() - Deposit of "
-                            + trans.getTransactionAmount() + " in account " + trans.getAccountNumber());
+                    // System.out.println("\n DEBUG : Server.processTransactions() - Deposit of "
+                    //         + trans.getTransactionAmount() + " in account " + trans.getAccountNumber());
                 } else
                 /* Process withdraw operation */
                 if (trans.getOperationType().equals("WITHDRAW")) {
@@ -204,8 +204,8 @@ public class Server extends Thread {
                     trans.setTransactionBalance(newBalance);
                     trans.setTransactionStatus("done");
 
-                    System.out.println("\n DEBUG : Server.processTransactions() - Withdrawal of "
-                            + trans.getTransactionAmount() + " from account " + trans.getAccountNumber());
+                    // System.out.println("\n DEBUG : Server.processTransactions() - Withdrawal of "
+                    //         + trans.getTransactionAmount() + " from account " + trans.getAccountNumber());
                 } else
                 /* Process query operation */
                 if (trans.getOperationType().equals("QUERY")) {
@@ -213,16 +213,16 @@ public class Server extends Thread {
                     trans.setTransactionBalance(newBalance);
                     trans.setTransactionStatus("done");
 
-                    System.out.println("\n DEBUG : Server.processTransactions() - Obtaining balance from account"
-                            + trans.getAccountNumber());
+                    // System.out.println("\n DEBUG : Server.processTransactions() - Obtaining balance from account"
+                    //         + trans.getAccountNumber());
                 }
 
                 while ((objNetwork.getOutBufferStatus().equals("full"))){Thread.yield();}
 
                 /* Alternatively, busy-wait until the network output buffer is available */
 
-                System.out.println("\n DEBUG : Server.processTransactions() - transferring out account "
-                        + trans.getAccountNumber());
+                // System.out.println("\n DEBUG : Server.processTransactions() - transferring out account "
+                //         + trans.getAccountNumber());
 
                 objNetwork.transferOut(trans); /*
                                                 * Transfer a completed transaction from the server to the network output
@@ -234,8 +234,8 @@ public class Server extends Thread {
             }
         }
 
-        System.out.println(
-                "\n DEBUG : Server.processTransactions() - " + getNumberOfTransactions() + " accounts updated");
+        // System.out.println(
+        //         "\n DEBUG : Server.processTransactions() - " + getNumberOfTransactions() + " accounts updated");
 
         return true;
     }
@@ -306,8 +306,8 @@ public class Server extends Thread {
     public void run() {
         Transactions trans = new Transactions();
         long serverStartTime, serverEndTime;
-        System.out
-                .println("\n DEBUG : Server.run() - starting server thread " + objNetwork.getServerConnectionStatus());
+        // System.out
+        //         .println("\n DEBUG : Server.run() - starting server thread " + objNetwork.getServerConnectionStatus());
 
         /* Implement the code for the run method */
         serverStartTime = System.currentTimeMillis();
