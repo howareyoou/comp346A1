@@ -7,7 +7,7 @@
 
 /**
  * Network class
- *
+ * 
  * @author Kerly Titus
  */
 public class Network extends Thread {

@@ -103,7 +103,7 @@ public class Client extends Thread {
         int i = 0; /* Index of transactions array */
 
         try {
-            inputStream = new Scanner(new FileInputStream("./PA1-code/transaction.txt"));
+            inputStream = new Scanner(new FileInputStream("transaction.txt"));
         } catch (FileNotFoundException e) {
             System.out.println("File transaction.txt was not found");
             System.out.println("or could not be opened.");
@@ -211,14 +211,12 @@ public class Client extends Thread {
             sendClientStartTime = System.currentTimeMillis();
             sendTransactions();
             sendClientEndTime = System.currentTimeMillis();
-            System.out.println("\n Terminating client sending thread - Running time "
-                    + (sendClientEndTime - sendClientStartTime) + " milliseconds");
+            System.out.println("\n Terminating client sending thread - Running time "+ (sendClientEndTime - sendClientStartTime) + " milliseconds");
         } else if (clientOperation.equals("receiving")) {
             receiveClientStartTime = System.currentTimeMillis();
             receiveTransactions(transact);
             receiveClientEndTime = System.currentTimeMillis();
-            System.out.println("\n Terminating client receiving thread - Running time "
-                    + (receiveClientEndTime - receiveClientStartTime) + " milliseconds");
+            System.out.println("\n Terminating client receiving thread - Running time "+ (receiveClientEndTime - receiveClientStartTime) + " milliseconds");
             objNetwork.disconnect(objNetwork.getClientIP());
         }
     }

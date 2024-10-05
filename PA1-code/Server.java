@@ -119,7 +119,7 @@ public class Server extends Thread {
         int i = 0; /* index of accounts array */
 
         try {
-            inputStream = new Scanner(new FileInputStream("./PA1-code/account.txt"));
+            inputStream = new Scanner(new FileInputStream("account.txt"));
         } catch (FileNotFoundException e) {
             System.out.println("File account.txt was not found");
             System.out.println("or could not be opened.");
@@ -141,7 +141,7 @@ public class Server extends Thread {
         }
         setNumberOfAccounts(i); /* Record the number of accounts processed */
 
-        System.out.println("\n DEBUG : Server.initializeAccounts() " + getNumberOfAccounts() + " accounts processed");
+        // System.out.println("\n DEBUG : Server.initializeAccounts() " + getNumberOfAccounts() + " accounts processed");
 
         inputStream.close();
     }
